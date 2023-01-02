@@ -29,22 +29,19 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 
+app.use(session(sess));
+
+
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
-app.use(session(sess));
-app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
-app.use(express.urlencoded({
-    extended: true
-}));
-app.use(routes);
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'public')));
 
-sequelize.sync();
+app.use(require('./controllers/'));
 
-// app.listen(PORT, () => {
-//     console.log(`App listening on port ${PORT}!`);
-// });
-app.listen(process.env.PORT || 3001, function(){
-    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
-  });
+app.listen(PORT, () => {
+  console.log(`App listening on port ${PORT}!`);
+  sequelize.sync({ force: false });
+});
