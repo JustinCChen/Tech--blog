@@ -5,9 +5,8 @@
 This application allows various different users to create an account and post blog posts. Users can edit and delete their posts and also to comment on posts.
 
 # Screenshot
-![me]
+![me]https://github.com/JustinCChen/Tech-blog/blob/main/public/images/Screen%20Shot%202023-01-02%20at%206.14.50%20PM.png
 
-# Application Link
 
 
 # Questions
